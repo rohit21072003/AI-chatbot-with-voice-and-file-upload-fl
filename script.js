@@ -196,3 +196,43 @@ imageBtn.addEventListener("click", () => {
 
 
 
+imageInput.addEventListener("change", () => {
+    const file = imageInput.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const base64string = e.target.result.split(",")[1];
+        user.file = {
+            mime_type: file.type,
+            data: base64string
+        };
+        image.src = `data:${user.file.mime_type};base64,${user.file.data}`;
+        image.classList.add("choose");
+    };
+    reader.readAsDataURL(file);
+});
+
+imageBtn.addEventListener("click", () => {
+    imageInput.click();
+});
+imageInput.addEventListener("change", () => {
+    const file = imageInput.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const base64string = e.target.result.split(",")[1];
+        user.file = {
+            mime_type: file.type,
+            data: base64string
+        };
+        image.src = `data:${user.file.mime_type};base64,${user.file.data}`;
+        image.classList.add("choose");
+    };
+    reader.readAsDataURL(file);
+});
+
+imageBtn.addEventListener("click", () => {
+    imageInput.click();
+});
